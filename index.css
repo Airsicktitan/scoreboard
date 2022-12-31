@@ -8,14 +8,33 @@ body {
     background: #0a0001;
     font-size: 90px;
     font-family: 'Cursed Timer ULiL';
-    color: #F94F6D;
-    width: 120px;
+    color: #be0000;
+    width: 150px;
     margin: 20px;
+}
+
+.other {
+    margin-left: 700px;
+    margin-top: -250px;
+}
+
+.score2 {
+    background: #0a0001;
+    font-size: 60px;
+    font-family: 'Cursed Timer ULiL';
+    color: #be0000;
+    width: 510px;
 }
 
 .text{
     color: #F9FAFB;
     font: #f29411;
+}
+
+.text2{
+    font-size: 60px;
+    font-family: 'Cursed Timer ULiL';
+    color: #d8830c;
 }
 
 .container {
@@ -27,14 +46,17 @@ button {
     background: none;
     border-color: #F9FAFB;
     border-radius: 5px;
-    padding: 5px;
+    margin: 6px;
+    padding: 8px;
 }
 
 .btn{
     color: #F9FAFB;
 }
 
-.other {
+.btn2{
+    color: #F9FAFB;
+    margin-left: -720px;
 }
 
 .hide {

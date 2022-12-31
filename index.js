@@ -1,7 +1,6 @@
-let homeScore = document.getElementById("homeScore"), guestScore = document.getElementById("guestScore"), scoreHome = 0 ,scoreAway = 0, displayTimer = document.getElementById("display"), startGame = document.getElementById("startGame-btn"), isShow = true, currentQuarter = document.getElementById("quarter")
-
-const startTime = 12
-let countDown = startTime * 60
+let homeScore = document.getElementById("homeScore"), 
+guestScore = document.getElementById("guestScore"), scoreHome = 0 ,scoreAway = 0, displayTimer = document.getElementById("display"), startGame = document.getElementById("startGame-btn"), isShow = true, currentQuarter = document.getElementById("quarter"),
+newGame = document.getElementById("newGame-btn")
 
 function addOneHome(){
     scoreHome += 1
@@ -41,13 +40,21 @@ function reset(){
     displayTimer.textContent = "12:00"
     if(isShow){
         startGame.style.display = "Inline"
+        newGame.style.display = "None"
     }
     currentQuarter.textContent = "Q1"
 }
 
 
 function start(){
+    const startTime = 12
+    let countDown = startTime * 60
     let refreshIntervalId = setInterval(updateCountdown, 1000)
+    currentQuarter.textContent = "Q1"
+    newGame.style.display = "none"
+    scoreAway = 0
+    scoreHome = 0
+
     
     function updateCountdown(){
         let minutes = Math.floor(countDown/ 60)
@@ -60,12 +67,56 @@ function start(){
         countDown--;
         
         if(countDown < 0){
-           countDown = 0
-           clearInterval(refreshIntervalId)
-           currentQuarter.textContent = "Q2"
+            if(countDown < 0 && currentQuarter.textContent === "Q1"){
+                currentQuarter.textContent = "Intermission 1"
+                countDown = (60 * 2) + 10
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Intermission 1"){
+                currentQuarter.textContent = "Q2"
+                countDown = startTime * 60
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Q2"){
+                currentQuarter.textContent = "Half-time"
+                countDown = startTime * 60 + 120
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Half-time"){
+                currentQuarter.textContent = "Q3"
+                countDown = startTime * 60
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Q3"){
+                currentQuarter.textContent = "Intermission 2"
+                countDown = (60 * 2) + 10
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Intermission 2"){
+                currentQuarter.textContent = "Q4"
+                countDown = startTime * 60
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Q4" && scoreHome == scoreAway){
+                currentQuarter.textContent = "OT"
+                countDown = startTime * (60 * 5)
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "OT"){
+                currentQuarter.textContent = "End of Regulation!"
+                countDown = 0
+                clearInterval(refreshIntervalId)
+                if(isShow){
+                    newGame.style.display = "Inline"
+                }
+            }
+            else if(countDown < 0 && currentQuarter.textContent === "Q4"){
+                currentQuarter.textContent = "End of Regulation!"
+                countDown = 0
+                clearInterval(refreshIntervalId)
+                if(isShow){
+                    newGame.style.display = "Inline"
+                }
+            }
+            else{
+                currentQuarter.textContent = "Error!"
+                countDown = 0
+                clearInterval(refreshIntervalId)
+            }
         }
-
     }
-    
     startGame.style.display = "none"
 }
