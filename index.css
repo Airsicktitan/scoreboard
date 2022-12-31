@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    text-align: center;
+    background: #075985;
+}
+
+.score {
+    background: #0a0001;
+    font-size: 90px;
+    font-family: 'Cursed Timer ULiL';
+    color: #F94F6D;
+    width: 120px;
+    margin: 20px;
+}
+
+.text{
+    color: #F9FAFB;
+    font: #f29411;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background: none;
+    border-color: #F9FAFB;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn{
+    color: #F9FAFB;
+}
+
+.other {
+}
+
+.hide {
+    display: none
+}
+
+.show {
+    display: block
+}
