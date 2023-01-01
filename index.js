@@ -77,7 +77,7 @@ function start(){
             }
             else if(countDown < 0 && currentQuarter.textContent === "Q2"){
                 currentQuarter.textContent = "Half-time"
-                countDown = startTime + 180
+                countDown = startTime * 60 + 180
             }
             else if(countDown < 0 && currentQuarter.textContent === "Half-time"){
                 currentQuarter.textContent = "Q3"
