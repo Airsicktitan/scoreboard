@@ -77,7 +77,7 @@ function start(){
             }
             else if(countDown < 0 && currentQuarter.textContent === "Q2"){
                 currentQuarter.textContent = "Half-time"
-                countDown = startTime * 60 + 120
+                countDown = startTime + 180
             }
             else if(countDown < 0 && currentQuarter.textContent === "Half-time"){
                 currentQuarter.textContent = "Q3"
@@ -93,7 +93,7 @@ function start(){
             }
             else if(countDown < 0 && currentQuarter.textContent === "Q4" && scoreHome == scoreAway){
                 currentQuarter.textContent = "OT"
-                countDown = startTime * (60 * 5)
+                countDown = 300
             }
             else if(countDown < 0 && currentQuarter.textContent === "OT"){
                 currentQuarter.textContent = "End of Regulation!"
